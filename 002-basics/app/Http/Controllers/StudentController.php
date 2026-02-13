@@ -45,6 +45,8 @@ class StudentController extends Controller
      */
     public function show(Group $group, Student $student)
     {
+        abort_unless($student->group_id === $group->id, 404);
+
         return view('students.show', compact('group', 'student'));
     }
 
